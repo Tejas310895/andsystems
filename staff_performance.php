@@ -50,7 +50,8 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalScrollableTitle">
-                                                Today's Task of Tejas Shirsat</h5>
+
+                                                Task for the day</h5>
                                             <button type="button" class="close" data-bs-dismiss="modal"
                                                 aria-label="Close">
                                                 <i data-feather="x"></i>
@@ -108,7 +109,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalScrollableTitle">
-                                                Scrolling long Content</h5>
+                                                Total Task</h5>
                                             <button type="button" class="close" data-bs-dismiss="modal"
                                                 aria-label="Close">
                                                 <i data-feather="x"></i>
