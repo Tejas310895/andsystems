@@ -28,7 +28,7 @@ if(!isset($_SESSION['user'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AND SYSTEMS INDUSTRY MANAGEMENT SOFTWARE</title>
 
-    <link rel="stylesheet" href="voler/dist/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="voler/dist/assets/css/bootstrap.css?version=1">
 
     <link rel="stylesheet" href="voler/dist/assets/vendors/chartjs/Chart.min.css">
     <link rel="stylesheet" href="voler/dist/assets/vendors/simple-datatables/style.css">
