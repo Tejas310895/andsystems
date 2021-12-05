@@ -540,7 +540,7 @@ $content .= "
 ";
 $mail->MsgHTML($content); 
 if(!$mail->Send()) {
-  echo $e->errorMessage();
+  echo 'Mailer error: ' . $mail->ErrorInfo;
   echo "<script>alert('Error! Try Again');</script>";
   echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
 } else {
