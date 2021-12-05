@@ -57,10 +57,10 @@ $mail->Mailer = "smtp";
 $mail->SMTPDebug  = 2;  
 $mail->SMTPAuth   = TRUE;
 $mail->SMTPSecure = "tls";
-$mail->Port       = 465;
+$mail->Port       = 587;
 $mail->Host       = "smtp.gmail.com";
-$mail->Username   = "tshirsat700@gmail.com";
-$mail->Password   = "Sugandha@1995";
+$mail->Username   = "werneartech@gmail.com";
+$mail->Password   = "Wernear@26";
 
 $mail->IsHTML(true);
 $mail->AddAddress($supplier_email, "WERNEAR");
