@@ -21,6 +21,15 @@ $(".addMore1").click(function(){
     }
 });
 
+$(".addMore2").click(function(){
+    if($('body').find('.fieldGroup2').length < maxGroup){
+        var fieldHTML = '<div class="form-group fieldGroup2">'+$(".fieldGroupCopy2").html()+'</div>';
+        $('body').find('.fieldGroup2:last').after(fieldHTML);
+    }else{
+        alert('Maximum '+maxGroup+' groups are allowed.');
+    }
+});
+
 //remove fields group
 $("body").on("click",".remove",function(){ 
     $(this).parents(".fieldGroup").remove();
@@ -29,6 +38,11 @@ $("body").on("click",".remove",function(){
 //remove fields group
 $("body").on("click",".remove1",function(){ 
     $(this).parents(".fieldGroup1").remove();
+});
+
+//remove fields group
+$("body").on("click",".remove2",function(){ 
+    $(this).parents(".fieldGroup2").remove();
 });
 
 function setBillingAddress(){
