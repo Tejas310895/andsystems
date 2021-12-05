@@ -54,7 +54,7 @@ $mail = new PHPMailer\PHPMailer\PHPMailer(); //Argument true in constructor enab
 //Tell PHPMailer to use SMTP
 $mail->IsSMTP();
 $mail->Mailer = "smtp";
-$mail->SMTPDebug  = 0;  
+$mail->SMTPDebug  = 1;  
 $mail->SMTPAuth   = TRUE;
 $mail->SMTPSecure = "tls";
 $mail->Port       = 587;
