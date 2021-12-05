@@ -54,7 +54,7 @@ $mail = new PHPMailer\PHPMailer\PHPMailer(); //Argument true in constructor enab
 //Tell PHPMailer to use SMTP
 $mail->IsSMTP();
 $mail->Mailer = "smtp";
-$mail->SMTPDebug  = 2;  
+$mail->SMTPDebug  = 0;  
 $mail->SMTPAuth   = TRUE;
 $mail->SMTPSecure = "tls";
 $mail->Port       = 587;
@@ -561,7 +561,6 @@ $content .= "
 ";
 $mail->MsgHTML($content); 
 if(!$mail->Send()) {
-  echo 'Mailer error: ' . $mail->ErrorInfo;
   echo "<script>alert('Error! Try Again');</script>";
   echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
 } else {
