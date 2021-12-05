@@ -60,7 +60,7 @@ $mail->SMTPSecure = "tls";
 $mail->Port       = 587;
 $mail->Host       = "smtp.gmail.com";
 $mail->Username   = "werneartech@gmail.com";
-$mail->Password   = "Wernear@11";
+$mail->Password   = "Wernear@22";
 
 $mail->IsHTML(true);
 $mail->AddAddress($supplier_email, "WERNEAR");
