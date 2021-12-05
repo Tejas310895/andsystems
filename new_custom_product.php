@@ -202,7 +202,7 @@ if(isset($_POST['add_custom_product'])){
 
             if($run_insert_custom_product){
                 echo "<script>alert('Done')</script>";
-                echo "<script>window.open('index.php?purchase_invoice','_self')</script>";
+                echo "<script>window.open('index.php?custom_products','_self')</script>";
             }else{
                 echo "<script>alert('Failed, Try again')</script>";
             }
