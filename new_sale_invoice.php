@@ -914,10 +914,10 @@ if(isset($_POST['invoice_entry'])){
                                 $custom_product_gst_rate = $custom_product_gst_rateArr[$i];
                                 $custom_hsn_code = $custom_hsn_codeArr[$i];
                     
-                                $get_custom_hsn = "select * from custom_products where custom_product_id='$custom_product_id'";
-                                $run_custom_hsn = mysqli_query($con,$get_custom_hsn);
-                                $row_custom_hsn = mysqli_fetch_array($run_custom_hsn);
-                                $custom_hsn_code = $row_custom_hsn['custom_product_hsn'];
+                                // $get_custom_hsn = "select * from custom_products where custom_product_id='$custom_product_id'";
+                                // $run_custom_hsn = mysqli_query($con,$get_custom_hsn);
+                                // $row_custom_hsn = mysqli_fetch_array($run_custom_hsn);
+                                // $custom_hsn_code = $row_custom_hsn['custom_product_hsn'];
                     
                     
                                 $insert_custom_product = "insert into sale_inc_products (sale_inc_no,
