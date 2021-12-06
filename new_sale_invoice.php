@@ -263,6 +263,7 @@
                                         ?>
                                         </select>
                                         <label for=""></label>
+                                        <input type="text" name="raw_hsn_code[]" id="raw_product_qty" class="form-control" placeholder="HSN CODE"/>
                                         <input type="text" name="raw_product_qty[]" id="raw_product_qty" class="form-control" placeholder="Quantity"/>
                                         <input type="text" name="raw_product_unit_rate[]" id="raw_product_unit_rate" class="form-control" placeholder="Unit Rate"/>
                                         <input type="text" name="raw_product_discount[]" id="raw_product_discount" class="form-control" placeholder="Discount %"/>
@@ -300,6 +301,7 @@
                                         ?>
                                         </select>
                                         <label for=""></label>
+                                        <input type="text" name="custom_hsn_code[]" id="raw_product_qty" class="form-control" placeholder="HSN CODE"/>
                                         <input type="text" name="custom_product_qty[]" id="custom_product_qty" class="form-control" placeholder="Quantity"/>
                                         <input type="text" name="custom_product_unit_rate[]" id="custom_product_unit_rate" class="form-control" placeholder="Unit Rate"/>
                                         <input type="text" name="custom_product_discount[]" id="custom_product_discount" class="form-control" placeholder="Discount %"/>
@@ -346,6 +348,7 @@
                         }
                         ?>
                         </select>
+                        <input type="text" name="raw_hsn_code[]" id="raw_product_qty" class="form-control" placeholder="HSN CODE"/>
                         <input type="text" name="raw_product_qty[]" id="raw_product_qty" class="form-control" placeholder="Quantity" required/>
                         <input type="text" name="raw_product_unit_rate[]" id="raw_product_unit_rate" class="form-control" placeholder="Unit Rate" required/>
                         <input type="text" name="raw_product_discount[]" id="raw_product_discount" class="form-control" placeholder="Discount %" required/>
@@ -378,6 +381,7 @@
                         }
                         ?>
                         </select>
+                        <input type="text" name="custom_hsn_code[]" id="raw_product_qty" class="form-control" placeholder="HSN CODE"/>
                         <input type="text" name="custom_product_qty[]" id="custom_product_qty" class="form-control" placeholder="Quantity" required/>
                         <input type="text" name="custom_product_unit_rate[]" id="custom_product_unit_rate" class="form-control" placeholder="Unit Rate" required/>
                         <input type="text" name="custom_product_discount[]" id="custom_product_discount" class="form-control" placeholder="Discount %" required/>
@@ -430,6 +434,7 @@ if(isset($_POST['invoice_entry'])){
     if($product_type==='raw'){
 
     $raw_product_idArr = $_POST['raw_product_id'];
+    $raw_hsn_codeArr = $_POST['raw_hsn_code'];
     $raw_product_qtyArr = $_POST['raw_product_qty'];
     $raw_product_unit_rateArr = $_POST['raw_product_unit_rate'];
     $raw_product_discountArr = $_POST['raw_product_discount'];
@@ -439,6 +444,7 @@ if(isset($_POST['invoice_entry'])){
     }elseif($product_type==='custom'){
 
     $custom_product_idArr = $_POST['custom_product_id'];
+    $custom_hsn_codeArr = $_POST['custom_hsn_code'];
     $custom_product_qtyArr = $_POST['custom_product_qty'];
     $custom_product_unit_rateArr = $_POST['custom_product_unit_rate'];
     $custom_product_discountArr = $_POST['custom_product_discount'];
@@ -448,6 +454,7 @@ if(isset($_POST['invoice_entry'])){
     }elseif($product_type==='both'){
 
     $raw_product_idArr = $_POST['raw_product_id'];
+    $raw_hsn_codeArr = $_POST['raw_hsn_code'];
     $raw_product_qtyArr = $_POST['raw_product_qty'];
     $raw_product_unit_rateArr = $_POST['raw_product_unit_rate'];
     $raw_product_discountArr = $_POST['raw_product_discount'];
@@ -455,6 +462,7 @@ if(isset($_POST['invoice_entry'])){
     $raw_product_gst_rateArr = $_POST['raw_product_gst_rate'];
 
     $custom_product_idArr = $_POST['custom_product_id'];
+    $custom_hsn_codeArr = $_POST['custom_hsn_code'];
     $custom_product_qtyArr = $_POST['custom_product_qty'];
     $custom_product_unit_rateArr = $_POST['custom_product_unit_rate'];
     $custom_product_discountArr = $_POST['custom_product_discount'];
@@ -598,11 +606,12 @@ if(isset($_POST['invoice_entry'])){
                                 $raw_product_discount = $raw_product_discountArr[$i];
                                 $raw_product_gst_type = $raw_product_gst_typeArr[$i];
                                 $raw_product_gst_rate = $raw_product_gst_rateArr[$i];
+                                $raw_hsn_code = $raw_hsn_codeArr[$i];
                     
-                                $get_raw_hsn = "select * from raw_products where raw_product_id='$raw_product_id'";
-                                $run_raw_hsn = mysqli_query($con,$get_raw_hsn);
-                                $row_raw_hsn = mysqli_fetch_array($run_raw_hsn);
-                                $raw_hsn_code = $row_raw_hsn['raw_product_hsn'];
+                                // $get_raw_hsn = "select * from raw_products where raw_product_id='$raw_product_id'";
+                                // $run_raw_hsn = mysqli_query($con,$get_raw_hsn);
+                                // $row_raw_hsn = mysqli_fetch_array($run_raw_hsn);
+                                // $raw_hsn_code = $row_raw_hsn['raw_product_hsn'];
                     
                     
                                 $insert_raw_product = "insert into sale_inc_products (sale_inc_no,
@@ -725,11 +734,13 @@ if(isset($_POST['invoice_entry'])){
                                 $custom_product_discount = $custom_product_discountArr[$i];
                                 $custom_product_gst_type = $custom_product_gst_typeArr[$i];
                                 $custom_product_gst_rate = $custom_product_gst_rateArr[$i];
+                                $custom_hsn_code = $custom_hsn_codeArr[$i];
+
                     
-                                $get_custom_hsn = "select * from custom_products where custom_product_id='$custom_product_id'";
-                                $run_custom_hsn = mysqli_query($con,$get_custom_hsn);
-                                $row_custom_hsn = mysqli_fetch_array($run_custom_hsn);
-                                $custom_hsn_code = $row_custom_hsn['custom_product_hsn'];
+                                // $get_custom_hsn = "select * from custom_products where custom_product_id='$custom_product_id'";
+                                // $run_custom_hsn = mysqli_query($con,$get_custom_hsn);
+                                // $row_custom_hsn = mysqli_fetch_array($run_custom_hsn);
+                                // $custom_hsn_code = $row_custom_hsn['custom_product_hsn'];
                     
                     
                                 $insert_custom_product = "insert into sale_inc_products (sale_inc_no,
@@ -852,11 +863,12 @@ if(isset($_POST['invoice_entry'])){
                                 $raw_product_discount = $raw_product_discountArr[$i];
                                 $raw_product_gst_type = $raw_product_gst_typeArr[$i];
                                 $raw_product_gst_rate = $raw_product_gst_rateArr[$i];
+                                $raw_hsn_code = $raw_hsn_codeArr[$i];
                     
-                                $get_raw_hsn = "select * from raw_products where raw_product_id='$raw_product_id'";
-                                $run_raw_hsn = mysqli_query($con,$get_raw_hsn);
-                                $row_raw_hsn = mysqli_fetch_array($run_raw_hsn);
-                                $raw_hsn_code = $row_raw_hsn['raw_product_hsn'];
+                                // $get_raw_hsn = "select * from raw_products where raw_product_id='$raw_product_id'";
+                                // $run_raw_hsn = mysqli_query($con,$get_raw_hsn);
+                                // $row_raw_hsn = mysqli_fetch_array($run_raw_hsn);
+                                // $raw_hsn_code = $row_raw_hsn['raw_product_hsn'];
                     
                     
                                 $insert_raw_product = "insert into sale_inc_products (sale_inc_no,
@@ -900,6 +912,7 @@ if(isset($_POST['invoice_entry'])){
                                 $custom_product_discount = $custom_product_discountArr[$i];
                                 $custom_product_gst_type = $custom_product_gst_typeArr[$i];
                                 $custom_product_gst_rate = $custom_product_gst_rateArr[$i];
+                                $custom_hsn_code = $custom_hsn_codeArr[$i];
                     
                                 $get_custom_hsn = "select * from custom_products where custom_product_id='$custom_product_id'";
                                 $run_custom_hsn = mysqli_query($con,$get_custom_hsn);
