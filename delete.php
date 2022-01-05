@@ -137,8 +137,8 @@ if(isset($_GET['purchase_enquiry'])){
     $run_purchase_enquiry = mysqli_query($con,$get_purchase_enquiry);
     $row_purchase_enquiry = mysqli_fetch_array($run_purchase_enquiry);
 
-    $email_subject = $row_raw_product['email_subject'];
-    $supplier_email = $row_raw_product['supplier_email'];
+    $email_subject = $row_purchase_enquiry['email_subject'];
+    $supplier_email = $row_purchase_enquiry['supplier_email'];
 
     date_default_timezone_set('Asia/Kolkata');
     $today = date("Y-m-d H:i:s");

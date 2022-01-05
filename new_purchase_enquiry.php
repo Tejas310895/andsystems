@@ -216,7 +216,7 @@ if(isset($_POST['add_raw_enquiry'])){
                                                                          '$serialized_array',
                                                                          '$supplier_email',
                                                                          '$del_date',
-                                                                         'intiated',
+                                                                         'initiated',
                                                                          '$today',
                                                                          '$today')";
             $run_purchase_enquiry = mysqli_query($con,$insert_purchase_enquiry);

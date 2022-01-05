@@ -57,7 +57,7 @@
                                                                 
                                                                 echo "<span class='badge bg-info text-capitalize'>initiated</span>";
 
-                                                            }elseif($row_purchase_enquiry['purchase_enquiry_delivery_status']==='completed'){
+                                                            }elseif($row_purchase_enquiry['purchase_enquiry_delivery_status']==='shipped'){
 
                                                                 echo "<span class='badge bg-success text-capitalize'>completed</span>";
 
