@@ -35,6 +35,7 @@
                         <td><?php echo $row_raw_stock['raw_product_hsn']; ?></td>
                         <td><?php echo $row_raw_stock['raw_product_stock']; ?></td>
                         <td>
+                        <a href="index.php?raw_stock_edit=<?php echo $row_raw_stock['raw_product_id']; ?>" class="btn btn-warning">Edit</a>
                         <a href="delete.php?raw_product=<?php echo $row_raw_stock['raw_product_id']; ?>" class="btn btn-danger" onclick="return confirm('Are you sure you?');">Delete</a>
                         </td>
                     </tr>

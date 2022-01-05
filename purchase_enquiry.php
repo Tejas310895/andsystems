@@ -24,7 +24,7 @@
                 <tbody>
                 <?php 
                 
-                $get_purchase_entries = "select * from purchase_enquires";
+                $get_purchase_entries = "select * from purchase_enquires order by purchase_enquiry_delivery_status ASC";
                 $run_purchase_entries = mysqli_query($con,$get_purchase_entries);
                 while($row_purchase_entries=mysqli_fetch_array($run_purchase_entries)){
 
@@ -39,7 +39,7 @@
                         <td class="text-uppercase"><?php echo $row_supplier['supplier_title']; ?></td>
                         <td><?php echo $row_purchase_entries['supplier_email']; ?></td>
                         <td><?php echo date('d-M-y',strtotime($row_purchase_entries['purchase_enquiry_schedule'])); ?></td>
-                        <td class="text-capitalize"><?php echo $row_purchase_entries['purchase_enquiry_delivery_status']; ?></td>
+                        <td class="text-uppercase"><?php echo $row_purchase_entries['purchase_enquiry_delivery_status']; ?></td>
                         <td>
                             <!-- Button trigger for scrolling content modal -->
                             <button type="button" class="btn icon btn-info" data-bs-toggle="modal"
@@ -116,9 +116,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="enquiry_mail?purchase_enquiry_mail=<?php echo $row_purchase_entries['purchase_enquiry_id']; ?>" class="btn icon btn-danger" title="Resend Mail"><i class="fas fa-envelope"></i></a>
-                            <a href="index.php?purchase_enquiry_edit=<?php echo $row_purchase_entries['purchase_enquiry_id']; ?>" class="btn icon btn-danger" title="edit"><i class="fas fa-pen-square"></i></i></a>
-                            <a href="delete.php?purchase_enquiry=<?php echo $row_purchase_entries['purchase_enquiry_id']; ?>" class="btn icon btn-danger text-capitalize" onclick="return confirm('Are you sure you?');" title="Cancel"><i class="fas fa-times"></i></i></a>
+                            <a href="enquiry_mail?purchase_enquiry_mail=<?php echo $row_purchase_entries['purchase_enquiry_id']; ?>" class="btn icon btn-primary <?php if($row_purchase_entries['purchase_enquiry_delivery_status']==='shipped'){echo"d-none";} ?>" title="Resend Mail"><i class="fas fa-envelope"></i></a>
+                            <a href="index.php?purchase_enquiry_edit=<?php echo $row_purchase_entries['purchase_enquiry_id']; ?>" class="btn icon btn-warning <?php if($row_purchase_entries['purchase_enquiry_delivery_status']==='shipped'){echo"d-none";} ?>" title="edit"><i class="fas fa-pen-square"></i></i></a>
+                            <a href="update.php?purchase_enquiry=<?php echo $row_purchase_entries['purchase_enquiry_id']; ?>" class="btn icon btn-success text-capitalize <?php if($row_purchase_entries['purchase_enquiry_delivery_status']==='shipped'){echo"d-none";} ?>" onclick="return confirm('Are you sure you?');" title="Update Shipped"><i class="fas fa-check"></i></i></i></a>
+                            <a href="delete.php?purchase_enquiry=<?php echo $row_purchase_entries['purchase_enquiry_id']; ?>" class="btn icon btn-danger text-capitalize <?php if($row_purchase_entries['purchase_enquiry_delivery_status']==='shipped'){echo"d-none";} ?>" onclick="return confirm('Are you sure you?');" title="Cancel"><i class="fas fa-times"></i></i></a>
                         </td>
                     </tr>
                     <?php } ?>
