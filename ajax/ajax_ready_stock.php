@@ -27,12 +27,19 @@ if(isset($_POST['product_id'])){
         $row_raw_stock = mysqli_fetch_array($run_raw_stock);
 
         $raw_product_stock = $row_raw_stock['raw_product_stock'];
+        $raw_product_status = $row_raw_stock['raw_product_status'];
+
+        if ($raw_product_status==='inactive') {
+            $check_stock = 1;
+        }else{
 
         if($required_qty<=$raw_product_stock){
             $check_stock = 0;
         }else {
             $check_stock = 1;
         }
+
+    }
 
         $stock_available += $check_stock;
     }

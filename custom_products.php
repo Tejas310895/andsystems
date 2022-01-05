@@ -27,6 +27,7 @@
                 $get_custom_products = "select * from custom_products where custom_product_status='active'";
                 $run_custom_products = mysqli_query($con,$get_custom_products);
                 while($row_custom_products = mysqli_fetch_array($run_custom_products)){
+                    $custom_product_id = $row_custom_products['custom_product_id'];
                     $custom_product_sku = $row_custom_products['custom_product_sku'];
                 ?>
                     <tr>
@@ -34,12 +35,12 @@
                         <td>
                             <!-- Button trigger for scrolling content modal -->
                             <button type="button" class="btn btn-link bg-transparent border-0 text-dark" data-bs-toggle="modal"
-                                data-bs-target="#exampleModalScrollable">
+                                data-bs-target="#CP<?php echo $custom_product_id; ?>">
                                     <?php echo $row_custom_products['custom_product_title']; ?>
                             </button>
 
                             <!--scrolling content Modal -->
-                            <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="CP<?php echo $custom_product_id; ?>" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                                     <div class="modal-content">
