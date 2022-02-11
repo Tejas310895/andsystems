@@ -1,17 +1,17 @@
-<?php 
+<?php
 
 include("includes/db.php");
 session_start();
 
-if(isset($_GET['purchase_enquiry_mail'])){
+if (isset($_GET['purchase_enquiry_mail'])) {
 
   $purchase_enquiry_id = $_GET['purchase_enquiry_mail'];
 
   $get_purchase_enquiry = "select * from purchase_enquires where purchase_enquiry_id='$purchase_enquiry_id'";
-  $run_purchase_enquiry = mysqli_query($con,$get_purchase_enquiry);
+  $run_purchase_enquiry = mysqli_query($con, $get_purchase_enquiry);
   $row_purchase_enquiry = mysqli_fetch_array($run_purchase_enquiry);
 
-  $purchase_enquiry_created_at = date('M d, Y',strtotime($row_purchase_enquiry['purchase_enquiry_created_at']));
+  $purchase_enquiry_created_at = date('M d, Y', strtotime($row_purchase_enquiry['purchase_enquiry_created_at']));
   $email_subject = $row_purchase_enquiry['email_subject'];
   $email_content = $row_purchase_enquiry['email_content'];
   $email_note = $row_purchase_enquiry['email_note'];
@@ -19,10 +19,11 @@ if(isset($_GET['purchase_enquiry_mail'])){
 
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-<head>
-<!--[if gte mso 9]>
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+  <head>
+    <!--[if gte mso 9]>
 <xml>
   <o:OfficeDocumentSettings>
     <o:AllowPNG/>
@@ -30,46 +31,48 @@ if(isset($_GET['purchase_enquiry_mail'])){
   </o:OfficeDocumentSettings>
 </xml>
 <![endif]-->
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="x-apple-disable-message-reformatting">
-  <!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->
-  <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <!--[if !mso]><!-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<![endif]-->
+    <title></title>
 
-  <?php
-  require("PHPMailer/src/Exception.php");
-  require("PHPMailer/src/PHPMailer.php");
-  require("PHPMailer/src/SMTP.php");
+    <?php
+    require("PHPMailer/src/Exception.php");
+    require("PHPMailer/src/PHPMailer.php");
+    require("PHPMailer/src/SMTP.php");
 
-//   use PHPMailer\PHPMailer\PHPMailer;
-//   use PHPMailer\PHPMailer\Exception;
-  
-//   require 'PHPMailer/src/Exception.php';
-//   require 'PHPMailer/src/PHPMailer.php';
-//   require 'PHPMailer/src/SMTP.php';
+    //   use PHPMailer\PHPMailer\PHPMailer;
+    //   use PHPMailer\PHPMailer\Exception;
 
-//PHPMailer Object
-$mail = new PHPMailer\PHPMailer\PHPMailer(); //Argument true in constructor enables exceptions
+    //   require 'PHPMailer/src/Exception.php';
+    //   require 'PHPMailer/src/PHPMailer.php';
+    //   require 'PHPMailer/src/SMTP.php';
 
-//Tell PHPMailer to use SMTP
-$mail->IsSMTP();
-$mail->Mailer = "smtp";
-$mail->SMTPDebug  = 0;  
-$mail->SMTPAuth   = TRUE;
-$mail->SMTPSecure = "tls";
-$mail->Port       = 587;
-$mail->Host       = "smtp.gmail.com";
-$mail->Username   = "werneartech@gmail.com";
-$mail->Password   = "Wernear@26";
+    //PHPMailer Object
+    $mail = new PHPMailer\PHPMailer\PHPMailer(); //Argument true in constructor enables exceptions
 
-$mail->IsHTML(true);
-$mail->AddAddress($supplier_email, "WERNEAR");
-$mail->SetFrom("werneartech@gmail.com", "Tejas Shirsat");
-$mail->AddReplyTo("werneartech@gmail.com", "WERNEAR");
-// $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");
-$mail->Subject = $email_content;
+    //Tell PHPMailer to use SMTP
+    $mail->IsSMTP();
+    $mail->Mailer = "smtp";
+    $mail->SMTPDebug  = 0;
+    $mail->SMTPAuth   = TRUE;
+    $mail->SMTPSecure = "tls";
+    $mail->Port       = 587;
+    $mail->Host       = "smtp.gmail.com";
+    $mail->Username   = "andsystems@gmail.com";
+    $mail->Password   = "information#102";
 
-$content = "
+    $mail->IsHTML(true);
+    $mail->AddAddress($supplier_email, "AND SYSTEM");
+    $mail->SetFrom("andsystems@gmail.com", "And Systems");
+    $mail->AddReplyTo("andsystems@gmail.com", "AND SYSTEM");
+    // $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");
+    $mail->Subject = $email_content;
+
+    $content = "
 
     <style type='text/css'>
       table, td { color: #000000; } @media only screen and (min-width: 620px) {
@@ -400,21 +403,21 @@ a[x-apple-data-detectors='true'] {
 </div>";
 
 
-$unserialized_array = unserialize($row_purchase_enquiry['raw_product_array']);
-$array_size = (count($unserialized_array)-1);
+    $unserialized_array = unserialize($row_purchase_enquiry['raw_product_array']);
+    $array_size = (count($unserialized_array) - 1);
 
-for($i=0; $i<=$array_size; $i++){
+    for ($i = 0; $i <= $array_size; $i++) {
 
-  $item_id = $unserialized_array[$i][0];
-  $item_qty = $unserialized_array[$i][1];
+      $item_id = $unserialized_array[$i][0];
+      $item_qty = $unserialized_array[$i][1];
 
-  $get_raw_id = "select * from raw_products where raw_product_id='$item_id'";
-  $run_raw_id = mysqli_query($con,$get_raw_id);
-  $row_raw_id = mysqli_fetch_array($run_raw_id);
-  $raw_title = $row_raw_id['raw_product_title'];
-  $raw_unit = $row_raw_id['raw_product_unit'];
+      $get_raw_id = "select * from raw_products where raw_product_id='$item_id'";
+      $run_raw_id = mysqli_query($con, $get_raw_id);
+      $row_raw_id = mysqli_fetch_array($run_raw_id);
+      $raw_title = $row_raw_id['raw_product_title'];
+      $raw_unit = $row_raw_id['raw_product_unit'];
 
-  $content .="
+      $content .= "
 
 <div class='u-row-container' style='padding-left:15px;background-color: rgba(255,255,255,0)'>
 <div class='u-row' style='Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;'>
@@ -472,10 +475,9 @@ for($i=0; $i<=$array_size; $i++){
 </div>
 </div>
 ";
+    }
 
-}
-
-$content .= "
+    $content .= "
 <div class='u-row-container' style='padding-left:10px;background-color: rgba(255,255,255,0)'>
 <div class='u-row' style='Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;'>
   <div style='border-collapse: collapse;display: table;width: 100%;background-color: transparent;'>
@@ -559,15 +561,15 @@ $content .= "
 <!--[if mso]></div><![endif]-->
 <!--[if IE]></div><![endif]-->
 ";
-$mail->MsgHTML($content); 
-if(!$mail->Send()) {
-  echo "<script>alert('Error! Try Again');</script>";
-  echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
-} else {
-  echo "<script>alert('Mail Sent Successfully');</script>";
-  echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
-  $staff = $_SESSION['user'];
-  $insert_task = "insert into work_task_entries (user_id,
+    $mail->MsgHTML($content);
+    if (!$mail->Send()) {
+      echo "<script>alert('Error! Try Again');</script>";
+      echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
+    } else {
+      echo "<script>alert('Mail Sent Successfully');</script>";
+      echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
+      $staff = $_SESSION['user'];
+      $insert_task = "insert into work_task_entries (user_id,
                                                   work_task_title,
                                                   work_task_content,
                                                   work_task_entry_created_at,
@@ -578,10 +580,10 @@ if(!$mail->Send()) {
                                                    'Purchase enquiry mail sent again to $supplier_email with subject-$email_subject',
                                                    '$today',
                                                    '$today')";
-  $run_insert_task = mysqli_query($con,$insert_task);
-}
-?>  
-</body>
+      $run_insert_task = mysqli_query($con, $insert_task);
+    }
+    ?>
+    </body>
 
-</html>
+  </html>
 <?php } ?>

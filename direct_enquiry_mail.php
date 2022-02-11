@@ -45,7 +45,7 @@
   $mail->Password   = "information#102";
 
   $mail->IsHTML(true);
-  $mail->AddAddress($supplier_email, "WERNEAR");
+  $mail->AddAddress($supplier_email, "AND SYSTEM");
   $mail->SetFrom("andsystems@gmail.com", "And Systems");
   $mail->AddReplyTo("andsystems@gmail.com", "AND SYSTEM");
   // $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");
