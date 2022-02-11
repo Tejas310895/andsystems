@@ -1,7 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
 <head>
-<!--[if gte mso 9]>
+  <!--[if gte mso 9]>
 <xml>
   <o:OfficeDocumentSettings>
     <o:AllowPNG/>
@@ -12,7 +13,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="x-apple-disable-message-reformatting">
-  <!--[if !mso]><!--><meta http-equiv="X-UA-Compatible" content="IE=edge"><!--<![endif]-->
+  <!--[if !mso]><!-->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--<![endif]-->
   <title></title>
 
   <?php
@@ -20,35 +23,35 @@
   require("PHPMailer/src/PHPMailer.php");
   require("PHPMailer/src/SMTP.php");
 
-//   use PHPMailer\PHPMailer\PHPMailer;
-//   use PHPMailer\PHPMailer\Exception;
-  
-//   require 'PHPMailer/src/Exception.php';
-//   require 'PHPMailer/src/PHPMailer.php';
-//   require 'PHPMailer/src/SMTP.php';
+  //   use PHPMailer\PHPMailer\PHPMailer;
+  //   use PHPMailer\PHPMailer\Exception;
 
-//PHPMailer Object
-$mail = new PHPMailer\PHPMailer\PHPMailer(); //Argument true in constructor enables exceptions
+  //   require 'PHPMailer/src/Exception.php';
+  //   require 'PHPMailer/src/PHPMailer.php';
+  //   require 'PHPMailer/src/SMTP.php';
 
-//Tell PHPMailer to use SMTP
-$mail->IsSMTP();
-$mail->Mailer = "smtp";
-$mail->SMTPDebug  = 0;  
-$mail->SMTPAuth   = TRUE;
-$mail->SMTPSecure = "tls";
-$mail->Port       = 587;
-$mail->Host       = "smtp.gmail.com";
-$mail->Username   = "werneartech@gmail.com";
-$mail->Password   = "Wernear@26";
+  //PHPMailer Object
+  $mail = new PHPMailer\PHPMailer\PHPMailer(); //Argument true in constructor enables exceptions
 
-$mail->IsHTML(true);
-$mail->AddAddress($supplier_email, "WERNEAR");
-$mail->SetFrom("werneartech@gmail.com", "Tejas Shirsat");
-$mail->AddReplyTo("werneartech@gmail.com", "WERNEAR");
-// $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");
-$mail->Subject = $email_subject;
+  //Tell PHPMailer to use SMTP
+  $mail->IsSMTP();
+  $mail->Mailer = "smtp";
+  $mail->SMTPDebug  = 0;
+  $mail->SMTPAuth   = TRUE;
+  $mail->SMTPSecure = "tls";
+  $mail->Port       = 587;
+  $mail->Host       = "smtp.gmail.com";
+  $mail->Username   = "andsystems@gmail.com";
+  $mail->Password   = "information#102";
 
-$content = "
+  $mail->IsHTML(true);
+  $mail->AddAddress($supplier_email, "WERNEAR");
+  $mail->SetFrom("andsystems@gmail.com", "And Systems");
+  $mail->AddReplyTo("andsystems@gmail.com", "AND SYSTEM");
+  // $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");
+  $mail->Subject = $email_subject;
+
+  $content = "
 
     <style type='text/css'>
       table, td { color: #000000; } @media only screen and (min-width: 620px) {
@@ -379,21 +382,21 @@ a[x-apple-data-detectors='true'] {
 </div>";
 
 
-$unserialized_array = unserialize($serialized_array);
-$array_size = (count($unserialized_array)-1);
+  $unserialized_array = unserialize($serialized_array);
+  $array_size = (count($unserialized_array) - 1);
 
-for($i=0; $i<=$array_size; $i++){
+  for ($i = 0; $i <= $array_size; $i++) {
 
-  $item_id = $unserialized_array[$i][0];
-  $item_qty = $unserialized_array[$i][1];
+    $item_id = $unserialized_array[$i][0];
+    $item_qty = $unserialized_array[$i][1];
 
-  $get_raw_id = "select * from raw_products where raw_product_id='$item_id'";
-  $run_raw_id = mysqli_query($con,$get_raw_id);
-  $row_raw_id = mysqli_fetch_array($run_raw_id);
-  $raw_title = $row_raw_id['raw_product_title'];
-  $raw_unit = $row_raw_id['raw_product_unit'];
+    $get_raw_id = "select * from raw_products where raw_product_id='$item_id'";
+    $run_raw_id = mysqli_query($con, $get_raw_id);
+    $row_raw_id = mysqli_fetch_array($run_raw_id);
+    $raw_title = $row_raw_id['raw_product_title'];
+    $raw_unit = $row_raw_id['raw_product_unit'];
 
-  $content .="
+    $content .= "
 
 <div class='u-row-container' style='padding-left:15px;background-color: rgba(255,255,255,0)'>
 <div class='u-row' style='Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;'>
@@ -451,10 +454,9 @@ for($i=0; $i<=$array_size; $i++){
 </div>
 </div>
 ";
+  }
 
-}
-
-$content .= "
+  $content .= "
 <div class='u-row-container' style='padding-left:10px;background-color: rgba(255,255,255,0)'>
 <div class='u-row' style='Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: #ffffff;'>
   <div style='border-collapse: collapse;display: table;width: 100%;background-color: transparent;'>
@@ -538,15 +540,16 @@ $content .= "
 <!--[if mso]></div><![endif]-->
 <!--[if IE]></div><![endif]-->
 ";
-$mail->MsgHTML($content); 
-if(!$mail->Send()) {
-  echo 'Mailer error: ' . $mail->ErrorInfo;
-  echo "<script>alert('Error! Try Again');</script>";
-  echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
-} else {
-  echo "<script>alert('Mail Sent Successfully');</script>";
-  echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
-}
-?>  
-</body>
+  $mail->MsgHTML($content);
+  if (!$mail->Send()) {
+    echo 'Mailer error: ' . $mail->ErrorInfo;
+    echo "<script>alert('Error! Try Again');</script>";
+    echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
+  } else {
+    echo "<script>alert('Mail Sent Successfully');</script>";
+    echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
+  }
+  ?>
+  </body>
+
 </html>
