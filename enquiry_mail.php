@@ -563,7 +563,7 @@ a[x-apple-data-detectors='true'] {
 ";
     $mail->MsgHTML($content);
     if (!$mail->Send()) {
-      echo "<script>alert('Error! Try Again');</script>";
+      echo "<script>alert('Error! Try Again'. $mail->ErrorInfo);</script>";
       echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
     } else {
       echo "<script>alert('Mail Sent Successfully');</script>";
