@@ -102,4 +102,17 @@ if(isset($_POST['customer_title'])){
                            "customer_gstn"=>$customer_gstn));
 }
 
-?>
+if(isset($_POST['Inc_num_id'])){
+    $inc_number = $_POST['Inc_num_id'];
+
+    $get_invoice = "select * from sale_inc_entries where sale_inc_no='$inc_number' and sale_inc_status='active'";
+    $run_invoice = mysqli_query($con, $get_invoice);
+    $count_invoice = mysqli_num_rows($run_invoice);
+
+    if ($count_invoice == 0) {
+        echo 1;
+    }else{
+        echo 2;
+    }
+    
+}
