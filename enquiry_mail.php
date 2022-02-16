@@ -70,7 +70,7 @@ if (isset($_GET['purchase_enquiry_mail'])) {
     $mail->SetFrom("andsystems@gmail.com", "And Systems");
     $mail->AddReplyTo("andsystems@gmail.com", "AND SYSTEM");
     // $mail->AddCC("cc-recipient-email@domain", "cc-recipient-name");
-    $mail->Subject = $email_content;
+    $mail->Subject = $email_subject;
 
     $content = "
 
@@ -563,8 +563,9 @@ a[x-apple-data-detectors='true'] {
 ";
     $mail->MsgHTML($content);
     if (!$mail->Send()) {
-      echo "<script>alert('Error! Try Again'. $mail->ErrorInfo);</script>";
-      echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
+      // echo "<script>alert('Error! Try Again');</script>";
+      $e->getMessage();
+      // echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
     } else {
       echo "<script>alert('Mail Sent Successfully');</script>";
       echo "<script>window.open('index.php?purchase_enquiry','_self')</script>";
