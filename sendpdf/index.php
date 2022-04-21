@@ -797,7 +797,9 @@
 			echo "<script>alert('Mail Sent to customer')</script>";
 			echo "<script>window.open('../index.php?sales_invoices','_self')</script>";
 		} else {
-			echo 'Mailer Error: ' . $mail->ErrorInfo;
+			echo "<script>alert('Mail Error! Try again')</script>";
+			echo "<script>window.open('../index.php?sales_invoices','_self')</script>";
+			// echo 'Mailer Error: ' . $mail->ErrorInfo;
 		}
 		unlink($file_name);
 
