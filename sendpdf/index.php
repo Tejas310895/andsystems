@@ -12,7 +12,7 @@
 		$message = '';
 
 		// $connect = new PDO("mysql:host=localhost:3308;dbname=andsystems", "root", "");
-		$connect = mysqli_connect('localhost:3308', 'root', '', 'andsystems');
+		$connect = mysqli_connect('localhost', 'u708087849_andsystems', 'Ands@1234', 'u708087849_andsystems');
 
 		$mail_inc_id = $_POST['Mail_inc_no'];
 
