@@ -239,6 +239,7 @@ if (isset($_GET['sale_inc_print'])) {
                                         $sale_product_gst_rate = $row_inc_pro['sale_product_gst_rate'];
                                         $sale_product_gst_type = $row_inc_pro['sale_product_gst_type'];
                                         $sale_product_discount = $row_inc_pro['sale_product_discount'];
+                                        $sale_inc_product_desc = $row_inc_pro['sale_inc_product_desc'];
 
                                         if ($sale_product_type === 'raw') {
 
@@ -267,7 +268,10 @@ if (isset($_GET['sale_inc_print'])) {
                                     ?>
                                         <tr class="text-center" style="font-size:1rem;">
                                             <td class=" p-1"><?php echo ++$pro_counter; ?></td>
-                                            <td class=" p-1"><?php echo $product_title; ?></td>
+                                            <td class=" p-1">
+                                                <?php echo $product_title; ?>
+                                                <br> <span class="font-italic">(<?php echo $sale_inc_product_desc; ?>)</span>
+                                            </td>
                                             <td class=" p-1"><?php echo $sale_product_hsn_code; ?></td>
                                             <td class=" p-1"><?php echo $sale_product_qty; ?></td>
                                             <td class=" p-1"><?php echo $sale_product_unit_rate; ?></td>
