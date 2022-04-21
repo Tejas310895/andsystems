@@ -270,7 +270,7 @@ if (isset($_GET['sale_inc_print'])) {
                                             <td class=" p-1"><?php echo ++$pro_counter; ?></td>
                                             <td class=" p-1">
                                                 <?php echo $product_title; ?>
-                                                <br> <span class="font-italic"><?php echo '(' . $sale_inc_product_desc . ')'; ?></span>
+                                                <br> <span class="font-italic <?php if (empty($sale_inc_product_desc)) echo 'd-none'; ?>"><?php echo '(' . $sale_inc_product_desc . ')'; ?></span>
                                             </td>
                                             <td class=" p-1"><?php echo $sale_product_hsn_code; ?></td>
                                             <td class=" p-1"><?php echo $sale_product_qty; ?></td>
